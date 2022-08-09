@@ -66,10 +66,10 @@
                     <td scope="row" class="py-2 px-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         <div class="flex space-x-2">
 
-                            <a href="{{ route('admin.periods.edit',$period->id) }} " id="edit_period_btn" class="px-4 py-2 bg-green-600 hover:bg-green-900 rounded-lg text-white" >Edit</a>
+                            <a href="{{ route('admin.periods.edit',$period->id) }} " id="edit_period_btn" class="px-4 py-1 bg-green-600 hover:bg-green-900 rounded-lg text-white" >Edit</a>
 
                             {{-- @yield('content') --}}
-                            <form action="{{ route('admin.periods.destroy',$period->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete ?')" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-900 text-white">
+                            <form action="{{ route('admin.periods.destroy',$period->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete ?')" class="px-4 py-1 rounded-lg bg-red-600 hover:bg-red-900 text-white">
                                 @csrf
                                 @method('DELETE')
                             <button type="submit" >Delete</button>

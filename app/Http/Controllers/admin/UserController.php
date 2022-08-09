@@ -48,7 +48,7 @@ class UserController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'tel_number'=>['required'],
+            'tel_number'=>['required','regex:/^(\d{10})$/'],
             'role'=>['required', new EnumValue(RoleEnum::class)],
             'password' => ['required', 'confirmed', Password::defaults()],
         ];
@@ -59,7 +59,6 @@ class UserController extends Controller
             return response()->json(['status'=>false,'error'=>$validator->errors()->toArray()]);
         }
         else{
-
             $user = User::create([
 
                 'first_name' => $request->first_name,
@@ -74,10 +73,8 @@ class UserController extends Controller
 
             event(new Registered($user));
 
-            $view=$this->index();
-
-            to_route('admin.users.index')->with('success','the user has been registered successfully .');
-            return response()->json(['status'=>true,'view'=>$view->render()]);
+            to_route('admin.users.create')->with('success','the user has been registered successfully .');
+            return response()->json(['status'=>true]);
         }
     }
 
@@ -133,6 +130,7 @@ class UserController extends Controller
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
+                'role' => $request->role,
                 'tel_number' => $request->tel_number,
                 'password' => Hash::make($request->password),
                 'email_verified_at' => now(),
@@ -141,10 +139,8 @@ class UserController extends Controller
 
             event(new Registered($user));
 
-            $view=$this->index();
-
-            to_route('admin.users.index')->with('warning','the user has been updated successfully .');
-            return response()->json(['status'=>true,'view'=>$view->render()]);
+            to_route('admin.users.edit',$user->id)->with('warning','the user has been updated successfully .');
+            return response()->json(['status'=>true]);
         }
     }
 

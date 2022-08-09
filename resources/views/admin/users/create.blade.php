@@ -135,7 +135,7 @@ $(document).ready(function(){
                                 });
                             }
                             else{
-                                document.write(res.view)
+                             location.reload();
                             }
                         },
                         error: function( xhr,st,tr){alert('ERROR OCCURED WHILE DELETING THE RECORD !')}
