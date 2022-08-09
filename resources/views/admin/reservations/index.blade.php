@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="flex justify-end m-2 p-2">
-                <a href="{{ route('admin.reservations.create') }}" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-800 rounded-lg">new Reservation</a>
+                {{-- <a href="{{ route('admin.reservations.create') }}" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-800 rounded-lg">new Reservation</a> --}}
             </div>
         </div>
     </div>
@@ -23,7 +23,9 @@
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-
+                <th scope="col" class="py-3 px-4">
+                    ID
+                </th>
                 <th scope="col" class="py-3 px-6">
                     First Name
                 </th>
@@ -42,13 +44,10 @@
                     Date of Reservation
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Meal
+                    Pitch
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Number of Guests
-                </th>
-                <th scope="col" class="py-3 px-6">
-                    Table
+                    Period Time
                 </th>
                   <th scope="col" class="py-3 px-6">
                     Options
@@ -58,47 +57,47 @@
         <tbody>
             @foreach ($reservations as $reservation)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td scope="row" class="py-4 px-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+
+                    {{ $reservation->id }}
+                </td>
                 <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                    {{ $reservation->first_name }}
+                    {{ $reservation->user_id->first_name }}
                 </td>
 
                 <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $reservation->last_name }}
+                    {{ $reservation->user_id->last_name }}
                 </td>
 
                 <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $reservation->email }}
+                    {{ $reservation->user_id->email }}
                 </td>
 
                 <td scope="row" class="py-4 px-6 max-w-xs font-medium text-gray-900 whitespace-wrap dark:text-white">
-                    {{ $reservation->tel_number  }}
+                    {{ $reservation->user_id->tel_number  }}
                 </td>
 
                 <td scope="row" class="py-4 px-6 max-w-xs font-medium text-gray-900 whitespace-wrap dark:text-white">
-                    {{ $reservation->res_date  }}
+                    {{ $reservation->res_date}}
                 </td>
 
                 <td scope="row" class="py-4 px-6 max-w-xs font-medium text-gray-900 whitespace-wrap dark:text-white">
-                    {{ $reservation->meal  }}
+                    {{ $reservation->pitch_id->name  }}
                 </td>
 
 
                 <td scope="row" class="py-4 px-6 max-w-xs font-medium text-gray-900 whitespace-wrap dark:text-white">
-                    {{ $reservation->guests_number  }}
+                    {{ $reservation->period_id->period_time  }}
                 </td>
 
-                <td scope="row" class="py-4 px-6 max-w-xs font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $reservation->table->name  }}
-                </td>
-                </td>
 
 
                 {{-- options --}}
                 <td scope="row" class="py-2 px-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <div class="flex space-x-2">
-                        <a href="{{ route('admin.reservations.edit',$reservation->id) }}" class="px-4 py-2 bg-green-600 hover:bg-green-900 rounded-lg text-white"  data-modal-toggle="update-modal" >Edit</a>
-                        <form action="{{ route('admin.reservations.destroy',$reservation->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete ?')" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-900 text-white">
+                        <a href="{{ route('admin.reservations.edit',$reservation->id) }}" class="px-4 py-1 bg-green-600 hover:bg-green-900 rounded-lg text-white"  data-modal-toggle="update-modal" >Edit</a>
+                        <form action="{{ route('admin.reservations.destroy',$reservation->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete ?')" class="px-4 py-1 rounded-lg bg-red-600 hover:bg-red-900 text-white">
                         @csrf
                         @method('DELETE')
                         <button type="submit" >Delete</button>

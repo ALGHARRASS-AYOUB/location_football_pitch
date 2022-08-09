@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Pitch;
+use App\Enums\StatusEnum;
+use App\Models\Reservation;
+use function Ramsey\Uuid\v1;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
+use App\Models\Period;
 
 class ReservationController extends Controller
 {
@@ -14,7 +20,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
+        $reservations=Reservation::all();
+        return view('admin.reservations.index',compact('reservations'));
     }
 
     /**
@@ -55,9 +62,11 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Reservation $reservation)
     {
-        //
+        $pitches=Pitch::where('status',StatusEnum::Avaliable);
+        $periods=Period::all();
+        return view('admin.reservations.edit',compact('reservation','pitches','periods'));
     }
 
     /**
@@ -67,9 +76,16 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Reservation $reservation)
     {
-        //
+        $rules=[];
+        $validator=validator($request->all(),$rules);
+        if($validator->fails()){
+            return response()->json([ 'status'=>false,'error'=>$validator->errors()->toArray() ]);
+        }else{
+            // test if the verificationController return true
+            $reservation->update([]);
+        }
     }
 
     /**
