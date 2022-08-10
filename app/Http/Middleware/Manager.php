@@ -3,7 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Enums\RoleEnum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Manager
 {
@@ -16,7 +18,8 @@ class Manager
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->check() && !auth()->user()->role=='manager')
+        $is_manager= Auth::user()->role==RoleEnum::Manager;
+        if(!auth()->check() || !$is_manager)
         abort(403);
         return $next($request);
     }

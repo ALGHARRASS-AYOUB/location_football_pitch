@@ -22,18 +22,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware('auth')->name('dashboard')->group(function(){
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['admin']);
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['manager']);
+
+});
 
 
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function(){
-    Route::get('/',[AdminController::class,'index'])->name('index');
 
-    Route::resource('/users',UserController::class);
-    Route::resource('/pitches',PitchController::class);
-    Route::resource('/periods',PeriodController::class);
-    Route::resource('/reservations',ReservationController::class);
+    // Route::middleware('admin')->group(function(){
+        // });
+        Route::get('/',[AdminController::class,'index'])->name('index');
+        Route::resource('/users',UserController::class);
+        Route::resource('/pitches',PitchController::class);
+        Route::resource('/periods',PeriodController::class);
+        Route::resource('/reservations',ReservationController::class);
+    // Route::middleware('manager')->group(function(){
+    //     Route::resource('/users',UserController::class);
+    //     Route::resource('/pitches',PitchController::class);
+    //     Route::resource('/periods',PeriodController::class);
+    //     Route::resource('/reservations',ReservationController::class);
+    // });
 });
 
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -129,4 +129,389 @@
             </div>
         </div>
     </body>
-</html>
+</html> --}}
+
+{{-- <!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+        <!-- Styles -->
+        <style>
+            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
+        </style>
+
+        <style>
+            body {
+                font-family: 'Nunito', sans-serif;
+            }
+        </style>
+    </head> --}}
+
+
+    {{-- <body class="antialiased">
+        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+            @if (Route::has('login'))
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif --}}
+
+
+            {{--
+            </div>
+        </body>
+
+        </html> --}}
+
+
+        <x-guest-layout>
+            <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+
+                <div class="bg-overlay"></div>
+
+                   <div class="container">
+                        <div class="row">
+
+                             <div class="col-lg-8 col-md-10 mx-auto col-12">
+                                  <div class="hero-text mt-5 text-center">
+
+                                        <h6 data-aos="fade-up" data-aos-delay="300">usmba pitches group</h6>
+
+                                        <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Play football and Have Fun in our best Pitches</h1>
+
+                                        <a href="#about" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">Make Reservation</a>
+                                        <a href="#feature" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">learn more</a>
+
+
+                                  </div>
+
+
+                             </div>
+
+                        </div>
+                   </div>
+         </section>
+
+
+
+
+         <section class="feature" id="feature">
+            <div class="container">
+                <div class="row">
+
+                    <div class="d-flex flex-column justify-content-center ml-lg-auto mr-lg-5 col-lg-5 col-md-6 col-12">
+                        <h2 class="mb-3 text-white" data-aos="fade-up">New services</h2>
+
+                        <h6 class="mb-4 text-white" data-aos="fade-up">Your membership is up to 2 months FREE ($62.50 per month)</h6>
+
+                        <p data-aos="fade-up" data-aos-delay="200">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quaerat ad numquam voluptas unde eaque. Maxime, amet eum autem voluptates earum delectus cum possimus, est rerum, similique ad enim? Nostrum. <a rel="nofollow" href="https://www.tooplate.com" target="_parent">Tooplate</a> for your commercial website. Bootstrap v4.2.1 Layout. Feel free to use it.</p>
+
+                        <a href="#" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300" data-toggle="modal" data-target="#membershipForm">Become a member today</a>
+                    </div>
+
+                    <div class="mr-lg-auto mt-3 col-lg-4 col-md-6 col-12">
+                         <div class="about-working-hours">
+                              <div>
+
+                                    <h2 class="mb-4 text-white" data-aos="fade-up" data-aos-delay="500">Working hours</h2>
+
+                                   <strong class="d-block" data-aos="fade-up" data-aos-delay="600">Sunday : Closed</strong>
+
+                                   <strong class="mt-3 d-block" data-aos="fade-up" data-aos-delay="700">Monday - Friday</strong>
+
+                                    <p data-aos="fade-up" data-aos-delay="800">7:00 AM - 10:00 PM</p>
+
+                                    <strong class="mt-3 d-block" data-aos="fade-up" data-aos-delay="700">Saturday</strong>
+
+                                    <p data-aos="fade-up" data-aos-delay="800">6:00 AM - 4:00 PM</p>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+         <!-- ABOUT -->
+         <section class="about section" id="about">
+                   <div class="container">
+                        <div class="row">
+
+                                <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
+                                    <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Hello, we are USMBA Pitches group</h2>
+
+                                    <p data-aos="fade-up" data-aos-delay="400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptatem nobis necessitatibus corporis? Eligendi, nihil! Neque fugit nobis dolorem exercitationem assumenda veritatis, dolorum explicabo earum iusto, ut aliquid id nostrum..</p>
+
+                                    <p data-aos="fade-up" data-aos-delay="500">If you have any question regarding <a rel="nofollow" href="https://www.tooplate.com/view/2119-gymso-fitness" target="_parent">Gymso Fitness HTML template</a>, you can <a rel="nofollow" href="https://www.tooplate.com/contact" target="_parent">contact Tooplate</a> immediately. Thank you.</p>
+
+                                </div>
+
+                                <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
+                                    <div class="team-thumb">
+                                        <img src="{{ asset('assets/images/team/team-image.jpg') }}" class="img-fluid" alt="Trainer">
+
+                                        <div class="team-info d-flex flex-column">
+
+                                            <h3>Mary Yan</h3>
+                                            <span>Yoga Instructor</span>
+
+                                            <ul class="social-icon mt-3">
+                                                <li><a href="#" class="fa fa-twitter"></a></li>
+                                                <li><a href="#" class="fa fa-instagram"></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mr-lg-auto mt-5 mt-lg-0 mt-md-0 col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
+                                    <div class="team-thumb">
+                                        <img src="{{ asset('assets/images/team/team-image01.jpg') }}" class="img-fluid" alt="Trainer">
+
+                                        <div class="team-info d-flex flex-column">
+
+                                            <h3>Catherina</h3>
+                                            <span>Body trainer</span>
+
+                                            <ul class="social-icon mt-3">
+                                                <li><a href="#" class="fa fa-instagram"></a></li>
+                                                <li><a href="#" class="fa fa-facebook"></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>
+                   </div>
+         </section>
+
+
+         <!-- CLASS -->
+         <section class="class section" id="class">
+                   <div class="container">
+                        <div class="row">
+
+                                <div class="col-lg-12 col-12 text-center mb-5">
+                                    <h6 data-aos="fade-up">Get A Perfect Body</h6>
+
+                                    <h2 data-aos="fade-up" data-aos-delay="200">Our Services</h2>
+                                 </div>
+
+                                <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="class-thumb">
+                                        <img src="{{ asset('assets/images/class/yoga-class.jpg') }}" class="img-fluid" alt="Class">
+
+                                        <div class="class-info">
+                                            <h3 class="mb-1">Yoga</h3>
+
+                                            <span><strong>Trained by</strong> - Bella</span>
+
+                                            <span class="class-price">$50</span>
+
+                                            <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-5 mt-lg-0 mt-md-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="500">
+                                    <div class="class-thumb">
+                                        <img src="{{ asset('assets/images/class/crossfit-class.jpg') }}" class="img-fluid" alt="Class">
+
+                                        <div class="class-info">
+                                            <h3 class="mb-1">Areobic</h3>
+
+                                            <span><strong>Trained by</strong> - Mary</span>
+
+                                            <span class="class-price">$66</span>
+
+                                            <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-5 mt-lg-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="class-thumb">
+                                        <img src="{{ asset('assets/images/class/cardio-class.jpg') }}" class="img-fluid" alt="Class">
+
+                                        <div class="class-info">
+                                            <h3 class="mb-1">Cardio</h3>
+
+                                            <span><strong>Trained by</strong> - Cathe</span>
+
+                                            <span class="class-price">$75</span>
+
+                                            <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>
+                   </div>
+         </section>
+
+
+         <!-- SCHEDULE -->
+         <section class="schedule section" id="schedule">
+                   <div class="container">
+                        <div class="row">
+
+                                <div class="col-lg-12 col-12 text-center">
+                                    <h6 data-aos="fade-up">our weekly GYM schedules</h6>
+
+                                    <h2 class="text-white" data-aos="fade-up" data-aos-delay="200">Workout Timetable</h2>
+                                 </div>
+
+                                 <div class="col-lg-12 py-5 col-md-12 col-12">
+                                     <table class="table table-bordered table-responsive schedule-table" data-aos="fade-up" data-aos-delay="300">
+
+                                         <thead class="thead-light">
+                                             <th><i class="fa fa-calendar"></i></th>
+                                             <th>Mon</th>
+                                             <th>Tue</th>
+                                             <th>Wed</th>
+                                             <th>Thu</th>
+                                             <th>Fri</th>
+                                             <th>Sat</th>
+                                         </thead>
+
+                                         <tbody>
+                                             <tr>
+                                                <td><small>7:00 am</small></td>
+                                                <td>
+                                                    <strong>Cardio</strong>
+                                                    <span>7:00 am - 9:00 am</span>
+                                                </td>
+                                                <td>
+                                                    <strong>Power Fitness</strong>
+                                                    <span>7:00 am - 9:00 am</span>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <strong>Yoga Section</strong>
+                                                    <span>7:00 am - 9:00 am</span>
+                                                </td>
+                                             </tr>
+
+                                             <tr>
+                                                <td><small>9:00 am</small></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <strong>Boxing</strong>
+                                                    <span>8:00 am - 9:00 am</span>
+                                                </td>
+                                                <td>
+                                                    <strong>Areobic</strong>
+                                                    <span>8:00 am - 9:00 am</span>
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <strong>Cardio</strong>
+                                                    <span>8:00 am - 9:00 am</span>
+                                                </td>
+                                             </tr>
+
+                                             <tr>
+                                                <td><small>11:00 am</small></td>
+                                                <td></td>
+                                                <td>
+                                                    <strong>Boxing</strong>
+                                                    <span>11:00 am - 2:00 pm</span>
+                                                </td>
+                                                <td>
+                                                    <strong>Areobic</strong>
+                                                    <span>11:30 am - 3:30 pm</span>
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <strong>Body work</strong>
+                                                    <span>11:50 am - 5:20 pm</span>
+                                                </td>
+                                             </tr>
+
+                                             <tr>
+                                                <td><small>2:00 pm</small></td>
+                                                <td>
+                                                    <strong>Boxing</strong>
+                                                    <span>2:00 pm - 4:00 pm</span>
+                                                </td>
+                                                <td>
+                                                    <strong>Power lifting</strong>
+                                                    <span>3:00 pm - 6:00 pm</span>
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <strong>Cardio</strong>
+                                                    <span>6:00 pm - 9:00 pm</span>
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <strong>Crossfit</strong>
+                                                    <span>5:00 pm - 7:00 pm</span>
+                                                </td>
+                                             </tr>
+                                         </tbody>
+                                     </table>
+                                 </div>
+
+                        </div>
+                   </div>
+         </section>
+
+
+         <!-- CONTACT -->
+         <section class="contact section" id="contact">
+              <div class="container">
+                   <div class="row">
+
+                        <div class="ml-auto col-lg-5 col-md-6 col-12">
+                            <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2>
+
+                            <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
+                                <input type="text" class="form-control" name="cf-name" placeholder="Name">
+
+                                <input type="email" class="form-control" name="cf-email" placeholder="Email">
+
+                                <textarea class="form-control" rows="5" name="cf-message" placeholder="Message"></textarea>
+
+                                <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
+                            </form>
+                        </div>
+
+                        <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
+                            <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Where you can <span>find us</span></h2>
+
+                            <p data-aos="fade-up" data-aos-delay="800"><i class="fa fa-map-marker mr-1"></i> 120-240 Rio de Janeiro - State of Rio de Janeiro, Brazil</p>
+    <!-- How to change your own map point
+        1. Go to Google Maps
+        2. Click on your location point
+        3. Click "Share" and choose "Embed map" tab
+        4. Copy only URL and paste it within the src="" field below
+    -->
+                            <div class="google-map" data-aos="fade-up" data-aos-delay="900">
+                               {{-- <iframe src="https://maps.google.com/maps?q=Av.+Lúcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe> --}}
+                               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.4122437682404!2d-4.99935928531843!3d34.03329492617696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9f8c86d1348f1f%3A0x2f4c7b2754044613!2sWebmarko%20agence%20digitale%20%C3%A0%20F%C3%A8s!5e0!3m2!1sfr!2sma!4v1660138395640!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+
+                   </div>
+              </div>
+         </section>
+        </x-guest-layout>
