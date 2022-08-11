@@ -92,6 +92,8 @@
                     @if(session()->has('danger'))
                     <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:rext-red-800" role="alert">
                         <span class="font-medium "></span> {{session()->get('danger')}}
+                    </div>
+                    {{-- this div clusure is added --}}
                     @endif
 
                     @if(session()->has('warning'))

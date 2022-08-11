@@ -39,5 +39,6 @@ class DateRule implements Rule
     public function message()
     {
         return ' the date  you picked is not valid. please pick a valide one try {from '.Carbon::now()->format('Y-m-d').' to '.Carbon::now()->addWeek()->format('Y-m-d') .' }';
+        // return ' the date  you picked is not valid. please pick a valide one try {from '.Carbon::now()->format('Y-m-d').' to '.Carbon::now()->addWeek()->format('Y-m-d') .' }';
     }
 }

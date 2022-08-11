@@ -194,7 +194,7 @@
 
                                         <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Play football and Have Fun in our best Pitches</h1>
 
-                                        <a href="#about" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">Make Reservation</a>
+                                        <a href="{{ route('user.reservations.create') }}" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">Make Reservation</a>
                                         <a href="#feature" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">learn more</a>
 
 
@@ -499,12 +499,7 @@
                             <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Where you can <span>find us</span></h2>
 
                             <p data-aos="fade-up" data-aos-delay="800"><i class="fa fa-map-marker mr-1"></i> 120-240 Rio de Janeiro - State of Rio de Janeiro, Brazil</p>
-    <!-- How to change your own map point
-        1. Go to Google Maps
-        2. Click on your location point
-        3. Click "Share" and choose "Embed map" tab
-        4. Copy only URL and paste it within the src="" field below
-    -->
+
                             <div class="google-map" data-aos="fade-up" data-aos-delay="900">
                                {{-- <iframe src="https://maps.google.com/maps?q=Av.+Lúcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe> --}}
                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.4122437682404!2d-4.99935928531843!3d34.03329492617696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9f8c86d1348f1f%3A0x2f4c7b2754044613!2sWebmarko%20agence%20digitale%20%C3%A0%20F%C3%A8s!5e0!3m2!1sfr!2sma!4v1660138395640!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

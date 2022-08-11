@@ -46,7 +46,7 @@ class VerificationController extends Controller
                 return response()->json(['status'=>false,'msg_error'=>'there is no place avaliable for these schedule, please try an other time','places_av'=>($places-$places_reserved)]);
             }
         else{
-                $res= response()->json(array("status" => true,'msg_done'=>'good','places_av'=>$places,'places_rs'=>$places_reserved,'  reserved'=>  $reserved));
+                $res= response()->json(array("status" => true,'msg_done'=>'good','places_av'=>$places,'places_rs'=>$places_reserved));
             }
         return $res;
     }

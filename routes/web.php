@@ -1,11 +1,15 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\PitchController;
 use App\Http\Controllers\admin\PeriodController;
+use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\user\AuthUserController;
 use App\Http\Controllers\admin\ReservationController;
+use App\Http\Controllers\user\UserReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +38,8 @@ Route::middleware('auth')->name('dashboard')->group(function(){
 });
 
 
+
+
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function(){
 
     // Route::middleware('admin')->group(function(){
@@ -43,15 +49,29 @@ Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(func
         Route::resource('/pitches',PitchController::class);
         Route::resource('/periods',PeriodController::class);
         Route::resource('/reservations',ReservationController::class);
-    // Route::middleware('manager')->group(function(){
-    //     Route::resource('/users',UserController::class);
-    //     Route::resource('/pitches',PitchController::class);
-    //     Route::resource('/periods',PeriodController::class);
-    //     Route::resource('/reservations',ReservationController::class);
-    // });
+        // Route::middleware('manager')->group(function(){
+            //     Route::resource('/users',UserController::class);
+            //     Route::resource('/pitches',PitchController::class);
+            //     Route::resource('/periods',PeriodController::class);
+            //     Route::resource('/reservations',ReservationController::class);
+            // });
+        });
+
+        Route::get('/user/reservations/create/verifyDate',[VerificationController::class,'verifyDate'])->name('verifyDate');
+        Route::get('/user/reservations/create/verifyPlace',[VerificationController::class,'verifyPlace'])->name('verifyPlace');
+
+Route::middleware(['auth'])->name('user.')->prefix('user')->group(function(){
+
+        Route::resource('/',AuthUserController::class);
+        Route::resource('/reservations',UserReservationController::class);
+
 });
 
+// Route::get('user/{id}',function($id){
+//         dd(User::find($id));
+// })->middleware('auth');
 
+//this is a bullshit
 
 
 
