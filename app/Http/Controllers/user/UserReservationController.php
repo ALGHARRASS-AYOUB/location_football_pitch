@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\user;
 
-use App\Enums\StatusEnum;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Pitch;
+use App\Models\Period;
+use App\Rules\DateRule;
+use App\Enums\StatusEnum;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\VerificationController;
-use App\Models\Period;
-use App\Models\Pitch;
-use App\Rules\DateRule;
-use Carbon\Carbon;
 
 class UserReservationController extends Controller
 {
@@ -22,7 +23,13 @@ class UserReservationController extends Controller
      */
     public function index()
     {
-        //
+        $user=Auth::user();
+        // $reservations=Reservation::all();
+        $reservations=Reservation::where('user_id',$user->id)->get();
+        $pitches=Pitch::all();
+        $periods=Period::all();
+        $now=Carbon::now();
+        return view('user.reservations.index',compact('user','pitches','periods','reservations','now'));
     }
 
     /**
@@ -32,11 +39,13 @@ class UserReservationController extends Controller
      */
     public function create()
     {
+        $user =Auth::user();
         $min_date=Carbon::now();
         $periods=Period::all();
         $pitches=Pitch::where('status',StatusEnum::Avaliable)->get();
-        // $pitches=Pitch::all();
-        return view('user.reservations.create',compact('pitches','periods','min_date'));
+        $user_id=$user->id;
+
+        return view('user.reservations.create',compact('pitches','periods','min_date','user'));
 
         // return 'this is the view of create ';
     }
@@ -49,6 +58,7 @@ class UserReservationController extends Controller
      */
     public function store(Request $request)
     {
+        $user_id=Auth::user()->id;
         $res='';
         $rules=[
             'res_date'=>['required',new DateRule],
@@ -59,6 +69,13 @@ class UserReservationController extends Controller
         if($validator->fails()){
             $res= response()->json(['status'=>false,'errors'=>$validator->errors()->toArray()]);
         }else{
+
+            Reservation::create([
+                'res_date'=>$request->res_date,
+            'period_id'=>$request->period_id,
+            'pitch_id'=>$request->pitch_id,
+            'user_id'=>$user_id,
+            ]);
 
             to_route('user.reservations.create')->with('success',' your reservation has been created successfully.');
             $res= response()->json(['status'=>true]);
@@ -76,8 +93,7 @@ class UserReservationController extends Controller
      */
     public function show(User $user)
     {
-        $reservations=Reservation::where('user_id',$user->id)->get();
-        return view('user.reservations.index',compact('reservations'));
+
     }
 
     /**
@@ -86,9 +102,16 @@ class UserReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Reservation $reservation)
     {
-        //
+        $user =Auth::user();
+        $min_date=Carbon::now();
+        $periods=Period::all();
+        $pitches=Pitch::where('status',StatusEnum::Avaliable)->get();
+        $user_id=$user->id;
+
+        return view('user.reservations.edit',compact('pitches','periods','min_date','user','reservation'));
+
     }
 
     /**
@@ -98,9 +121,31 @@ class UserReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Reservation $reservation)
     {
-        //
+        $user_id=Auth::user()->id;
+        $res='';
+        $rules=[
+            'res_date'=>['required',new DateRule],
+            'period_id'=>'required',
+            'pitch_id'=>'required',
+        ];
+        $validator=validator($request->all(),$rules);
+        if($validator->fails()){
+            $res= response()->json(['status'=>false,'errors'=>$validator->errors()->toArray()]);
+        }else{
+
+           $reservation->update([
+                'res_date'=>$request->res_date,
+            'period_id'=>$request->period_id,
+            'pitch_id'=>$request->pitch_id,
+            'user_id'=>$user_id,
+            ]);
+
+            to_route('user.reservations.update')->with('warning',' your reservation has been updated successfully.');
+            $res= response()->json(['status'=>true]);
+        }
+    return $res;
     }
 
     /**

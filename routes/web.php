@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\AdminController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\admin\PeriodController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\user\AuthUserController;
 use App\Http\Controllers\admin\ReservationController;
+use App\Http\Controllers\user\AuthenticationUserController;
 use App\Http\Controllers\user\UserReservationController;
 
 /*
@@ -23,17 +25,22 @@ use App\Http\Controllers\user\UserReservationController;
 */
 
 Route::get('/', function () {
+    if(Auth::check())
+        return to_route('dashboard');
     return view('welcome');
 });
 
 Route::middleware('auth')->name('dashboard')->group(function(){
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['admin']);
+    Route::get('/dashboard',[AuthenticationUserController::class,'index'] );
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['manager']);
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->middleware(['manager']);
+
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->middleware(['manager']);
+
 
 });
 
@@ -62,7 +69,7 @@ Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(func
 
 Route::middleware(['auth'])->name('user.')->prefix('user')->group(function(){
 
-        Route::resource('/',AuthUserController::class);
+        // Route::resource('/',AuthUserController::class);
         Route::resource('/reservations',UserReservationController::class);
 
 });

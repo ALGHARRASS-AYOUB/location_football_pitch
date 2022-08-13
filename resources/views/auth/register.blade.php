@@ -8,34 +8,34 @@
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
+        <div class="mb-6"><h2 class="border-b-2 boreder-slate-600">Registration </h2></div>
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <!-- first_name -->
-            <div>
-                <x-label for="first_name" :value="__('First ame')" />
+            <div class="mt-4">
+                <x-label class="text-black font-bold" for="first_name" :value="__('First ame')" />
 
                 <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus />
             </div>
 
              <!-- last_name -->
-             <div>
-                <x-label for="last_name" :value="__('Last Name')" />
+             <div class="mt-4">
+                <x-label class="text-black font-bold" for="last_name" :value="__('Last Name')" />
 
                 <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus />
             </div>
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+                <x-label class="text-black font-bold" for="email" :value="__('Email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
             <!-- tel number -->
             <div class="mt-4">
-                <x-label for="tel_number" :value="__('Phone Number')" />
+                <x-label class="text-black font-bold" for="tel_number" :value="__('Phone Number')" />
 
                 <x-input id="tel_number" class="block mt-1 w-full" type="tel" name="tel_number"  required />
             </div>
@@ -43,7 +43,7 @@
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-label class="text-black font-bold" for="password" :value="__('Password')" />
 
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"
@@ -53,7 +53,7 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-label class="text-black font-bold" for="password_confirmation" :value="__('Confirm Password')" />
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
@@ -61,7 +61,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                <a class="underline text-sm text-gray-900 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 

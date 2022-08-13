@@ -81,9 +81,7 @@
                     {{-- ----------------- --}}
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ml-lg-auto">
-                            <li class="nav-item">
-                                <a href="#class" class="nav-link smoothScroll">reservations</a>
-                            </li>
+
 
                             @if (Route::has('login'))
                             @auth
@@ -102,8 +100,13 @@
                                             <a href="{{ route('register') }}" class="nav-link smoothScroll">register</a>
                                         </li>
                                     @endif
-                                @endauth
-                            @endif
+                                    @endauth
+                                    @endif
+                                   @auth
+                                   <li class="nav-item">
+                                    <a href="{{ route('user.reservations.index') }}" class="nav-link smoothScroll">reservations</a>
+                                </li>
+                                   @endauth
                             <li class="nav-item">
                                 <a href="#about" class="nav-link smoothScroll">About Us</a>
                             </li>
@@ -164,23 +167,23 @@
         </div>
 
 
-        <main  class="font-sans text-gray-900 antialiased">
+        <main  class="font-sans text-gray-900 my-8 antialiased">
             <div class="hero">
                 <div>
                     @if(session()->has('danger'))
-                    <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:rext-red-800" role="alert">
+                    <div class="p-4 mt-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:rext-red-800" role="alert">
                         <span class="font-medium "></span> {{session()->get('danger')}}
                     </div>
                     @endif
 
                     @if(session()->has('warning'))
-                    <div class="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:rext-yellow-800" role="alert">
+                    <div class="p-4 mb-4 text-sm mt-4 text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:rext-yellow-800" role="alert">
                         <span class="font-medium "></span> {{session()->get('warning')}}
                     </div>
                     @endif
 
                     @if(session()->has('success'))
-                    <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:rext-green-800" role="alert">
+                    <div class="p-4 mb-4 text-sm mt-4 text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:rext-green-800" role="alert">
                         <span class="font-medium "></span> {{session()->get('success')}}
                     </div>
                     @endif
