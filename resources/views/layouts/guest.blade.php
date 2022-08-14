@@ -1,30 +1,9 @@
-{{-- <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
-        </div>
-    </body>
-</html>
- --}}
 
  @vite(['resources/css/app.css', 'resources/js/app.js'])
  <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>ds
+    <head>
         <meta charset="utf-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -32,7 +11,6 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="author" content="">
-        {{-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> --}}
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -52,44 +30,26 @@
 
     </head>
     <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
-        <div class="mb-14">
+        <div class="mb-20">
             <nav class="navbar navbar-expand-lg fixed-top">
                 <div class="container">
 
-                    <a class="navbar-brand" href="index.html">USMBA Pitches Group</a>
+                    <a class="navbar-brand" href="/">USMBA Pitches Group</a>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    {{-- ------------------ --}}
-
-                    {{-- @if (Route::has('login'))
-                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                        @auth
-                            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                        @else
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                            @endif
-                        @endauth
-                    </div>
-                    @endif --}}
-                    {{-- ----------------- --}}
-                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="collapse navbar-collapse felx-end" id="navbarNav">
                         <ul class="navbar-nav ml-lg-auto">
-
+                            <li class="nav-item">
+                                <a href="{{ url('/') }}" class="nav-link smoothScroll">HOME</a>
+                            </li>
 
                             @if (Route::has('login'))
                             @auth
-                                {{-- @if (Auth::user()->role=='admin') --}}
-                                    {{-- <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a> --}}
-                                    {{-- @else --}}
 
-                                {{-- @endif --}}
                                 @else
                                     <li class="nav-item">
                                         <a href="{{ route('login') }}" class="nav-link smoothScroll">log in</a>
@@ -108,11 +68,15 @@
                                 </li>
                                    @endauth
                             <li class="nav-item">
-                                <a href="#about" class="nav-link smoothScroll">About Us</a>
+                                <a href="/#about" class="nav-link smoothScroll">About Us</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="#contact" class="nav-link smoothScroll">Contact</a>
+                                <a href="/#contact" class="nav-link smoothScroll">Contact</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/#services" class="nav-link smoothScroll">Services</a>
                             </li>
 
                             @auth
@@ -124,7 +88,7 @@
                                     </button>
                                     <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg">
                                         <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-700">
-                                             <span>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
+                                             <span class="text-sm">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
 
 
                                             @if (Auth::user()->role=='admin')
@@ -155,11 +119,7 @@
                             @endauth
                         </ul>
 
-                        <ul class="social-icon ml-lg-3">
-                            <li><a href="https://fb.com/tooplate" class="fa fa-facebook"></a></li>
-                            <li><a href="#" class="fa fa-twitter"></a></li>
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                        </ul>
+
                     </div>
 
                 </div>
@@ -169,21 +129,21 @@
 
         <main  class="font-sans text-gray-900 my-8 antialiased">
             <div class="hero">
-                <div>
+                <div class="container">
                     @if(session()->has('danger'))
-                    <div class="p-4 mt-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:rext-red-800" role="alert">
+                    <div class="p-4 mt-4 bg-opacity-60 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:rext-red-800" role="alert">
                         <span class="font-medium "></span> {{session()->get('danger')}}
                     </div>
                     @endif
 
                     @if(session()->has('warning'))
-                    <div class="p-4 mb-4 text-sm mt-4 text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:rext-yellow-800" role="alert">
+                    <div class="p-4 bg-opacity-60 mb-4 text-sm mt-4 text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:rext-yellow-800" role="alert">
                         <span class="font-medium "></span> {{session()->get('warning')}}
                     </div>
                     @endif
 
                     @if(session()->has('success'))
-                    <div class="p-4 mb-4 text-sm mt-4 text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:rext-green-800" role="alert">
+                    <div class="p-4 bg-opacity-60 mb-4 text-sm mt-4 text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:rext-green-800" role="alert">
                         <span class="font-medium "></span> {{session()->get('success')}}
                     </div>
                     @endif

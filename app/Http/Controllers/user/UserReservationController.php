@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\VerificationController;
+use App\Http\Requests\StoreReservationRequest;
 
 class UserReservationController extends Controller
 {
@@ -24,12 +25,12 @@ class UserReservationController extends Controller
     public function index()
     {
         $user=Auth::user();
-        // $reservations=Reservation::all();
-        $reservations=Reservation::where('user_id',$user->id)->get();
-        $pitches=Pitch::all();
-        $periods=Period::all();
+        $reservations=$user->reservations;
+        // $reservations=Reservation::where('user_id',$user->id)->get();
+        // $pitches=Pitch::all();
+        // $periods=Period::all();
         $now=Carbon::now();
-        return view('user.reservations.index',compact('user','pitches','periods','reservations','now'));
+        return view('user.reservations.index',compact('user','reservations','now'));
     }
 
     /**
@@ -56,8 +57,10 @@ class UserReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreReservationRequest $request)
     {
+
+
         $user_id=Auth::user()->id;
         $res='';
         $rules=[
@@ -123,6 +126,7 @@ class UserReservationController extends Controller
      */
     public function update(Request $request, Reservation $reservation)
     {
+
         $user_id=Auth::user()->id;
         $res='';
         $rules=[
@@ -130,11 +134,11 @@ class UserReservationController extends Controller
             'period_id'=>'required',
             'pitch_id'=>'required',
         ];
+
         $validator=validator($request->all(),$rules);
         if($validator->fails()){
             $res= response()->json(['status'=>false,'errors'=>$validator->errors()->toArray()]);
         }else{
-
            $reservation->update([
                 'res_date'=>$request->res_date,
             'period_id'=>$request->period_id,
@@ -142,7 +146,7 @@ class UserReservationController extends Controller
             'user_id'=>$user_id,
             ]);
 
-            to_route('user.reservations.update')->with('warning',' your reservation has been updated successfully.');
+             to_route('user.reservations.edit',compact('reservation'))->with('warning',' your reservation has been updated successfully.');
             $res= response()->json(['status'=>true]);
         }
     return $res;
@@ -154,8 +158,9 @@ class UserReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reservation $reservation)
     {
-        //
+        $reservation->delete();
+        return to_route('user.reservations.index')->with('danger',' your reservation has been deleted successfully.');
     }
 }

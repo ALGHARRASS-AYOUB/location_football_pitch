@@ -6,8 +6,8 @@
             <div class="m-4 flex   justify-start border-b-2 border-slate-600  " ><span class="font-semibold text-lg text-white">{{ $user->first_name }} {{ $user->last_name }}</span></div>
             <div class="flex flex-wrap justify-end space-x-4 m-2 p-2">
 
-                <div class="my-2 flex justify-end border-b-2 border-slate-600  " ><a href="{{ url('/') }}" class=" font-extrabold border-2 rounded-lg border-orange-600 bg-orange-300 bg-opacity-20 mt-6 mb-2 px-3 py-1 " data-aos="fade-up" data-aos-delay="800">⥻ BACK HOME</a></div>
-                <div class="my-2 flex justify-end border-b-2 border-slate-600  " ><a href="{{  route('user.reservations.create') }}" class=" font-extrabold border-2 rounded-lg border-orange-600 bg-orange-300 bg-opacity-20 mt-6 mb-2 px-3 py-1 " data-aos="fade-up" data-aos-delay="800">MAKE RESERVATION</a></div>
+                <div class="my-2 flex justify-end border-b-2 border-slate-600  " ><a href="{{ url('/') }}" class=" font-extrabold border-2 text-black rounded-lg border-orange-600 bg-orange-300 bg-opacity-20 mt-6 mb-2 px-3 py-1 " data-aos="fade-up" data-aos-delay="800">⥻ BACK HOME</a></div>
+                <div class="my-2 flex justify-end border-b-2 border-slate-600  " ><a href="{{  route('user.reservations.create') }}" class=" font-extrabold border-2 text-black rounded-lg border-orange-600 bg-orange-300 bg-opacity-20 mt-6 mb-2 px-3 py-1 " data-aos="fade-up" data-aos-delay="800">MAKE RESERVATION</a></div>
 
             </div>
         </div>
@@ -46,7 +46,7 @@
         </thead>
         <tbody>
             @foreach ($reservations as $reservation)
-            <tr class="bg-opacity-50 bg-slate-900 border-b dark:bg-gray-800 dark:border-gray-700">
+            <tr class="bg-opacity-70 bg-slate-900 border-b dark:bg-gray-800 dark:border-gray-700">
 
 
                 <td scope="row" class="py-3 px-auto text-center font-medium font-bold border-2 text-white whitespace-wrap dark:text-white">
@@ -54,17 +54,17 @@
                 </td>
 
                 <td scope="row" class="py-3 px-auto text-center font-medium font-bold border-2 text-white whitespace-wrap dark:text-white">
-                    {{ $pitches->find($reservation->pitch_id)->name  }}
+                    {{ $reservation->pitch->name  }}
                 </td>
 
 
                 <td scope="row" class="py-3 px-auto text-center font-medium font-bold border-2 text-white whitespace-wrap dark:text-white">
-                    {{ $periods->find($reservation->period_id)->period_time }}
+                    {{ $reservation->period->period_time }}
                 </td>
 
                 <td scope="row" class="py-3 px-auto text-center font-medium font-bold border-2 text-white whitespace-wrap dark:text-white">
                     {{ $reservation->created_at }}
-                    +{{ ($reservation->created_at->addHours(2)) }}+
+
                 </td>
 
                 <td scope="row" class="py-3 px-auto text-center font-medium font-bold border-2 text-white whitespace-wrap dark:text-white">

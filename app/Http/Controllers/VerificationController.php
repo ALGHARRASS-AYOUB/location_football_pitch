@@ -12,6 +12,7 @@ class VerificationController extends Controller
 {
     public function verifyDate(Request $request){
 
+
         $res_date=$request->res_date;
         $rule=[
             'res_date'=>[new DateRule],
@@ -28,7 +29,8 @@ class VerificationController extends Controller
 
     }
 
-    public function verifyPlace(Request $request){
+    public function verifyPlace(Request $request,$id=null){
+
         $res_date=$request->res_date;
         $period_id=$request->period_id;
         $pitch_id=$request->pitch_id;
@@ -39,14 +41,23 @@ class VerificationController extends Controller
             'res_date'=>[new DateRule],
         ];
 
-        $reserved=Reservation::where('res_date',$res_date)->where('period_id',$period_id)->get();
-        $places_reserved=count($reserved);
+        $reserved=Reservation::where('res_date',$res_date)->where('pitch_id',$pitch_id)->where('period_id',$period_id)->get();
+        $is_current_reservation=Reservation::where('id',$id)->where('res_date',$res_date)->where('pitch_id',$pitch_id)->where('period_id',$period_id)->exists();
+        $places_reserved= count($reserved) ;
+        $places_av=$places - $places_reserved;
+
+        if(isset($id) ){
+            if( $is_current_reservation)
+                    $places_av++;
+        }
+
             $is_avaliable= $places > $places_reserved ?? false;
             if(!$is_avaliable){
-                return response()->json(['status'=>false,'msg_error'=>'there is no place avaliable for these schedule, please try an other time','places_av'=>($places-$places_reserved)]);
+
+                return response()->json(['status'=>false,'msg_error'=>'there is no place avaliable for these schedule, please try an other time','places_av'=>$places_av]);
             }
         else{
-                $res= response()->json(array("status" => true,'msg_done'=>'good','places_av'=>$places,'places_rs'=>$places_reserved));
+                $res= response()->json(array("status" => true,'places_av'=>$places_av,'places_rs'=>$places_reserved,'$is_current_reservation'=>$is_current_reservation ));
             }
         return $res;
     }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Pitch;
 use App\Enums\StatusEnum;
 use App\Models\Reservation;
-use function Ramsey\Uuid\v1;
+
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
@@ -20,6 +20,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
+
         $reservations=Reservation::all();
         return view('admin.reservations.index',compact('reservations'));
     }

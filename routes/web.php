@@ -65,7 +65,7 @@ Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(func
         });
 
         Route::get('/user/reservations/create/verifyDate',[VerificationController::class,'verifyDate'])->name('verifyDate');
-        Route::get('/user/reservations/create/verifyPlace',[VerificationController::class,'verifyPlace'])->name('verifyPlace');
+        Route::get('/user/reservations/create/verifyPlace/{id?}',[VerificationController::class,'verifyPlace'])->name('verifyPlace');
 
 Route::middleware(['auth'])->name('user.')->prefix('user')->group(function(){
 

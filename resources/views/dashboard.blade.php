@@ -33,25 +33,13 @@
 
                      <div class="col-lg-8 col-md-10 mx-auto col-12">
                           <div class="hero-text mt-5 text-center">
-                            {{-- @if (session()->('user')) --}}
-                            {{-- <div >{{ session()->get('user') }}</div> --}}
 
-                            {{-- @endif --}}
-                            {{-- <h1 data-aos="fade-up" class="text-white" data-aos-delay="300">{{ session()->get('first_name') }}</h1> --}}
 
                                 <h6 data-aos="fade-up" data-aos-delay="300">usmba pitches group</h6>
 
                                 <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Play football and Have Fun in our best Pitches</h1>
 
-                                <a href="{{ route('user.reservations.create') }}" class="btn custom-btn bordered mt-3 bg-red-300 bg-opacity-10 text-white " data-aos="fade-up" data-aos-delay="400">Make Reservation</a>
-
-                                    {{-- <form action="{{ route('user.reservations.create') }}" method="get" >
-                                        @method('GET')
-                                    @csrf
-
-                                    <button class=" bg-red-300 bg-opacity-10 mt-3 border-2  hover:border-red-700 hover:bg-opacity-30 p-3 border-red-500 text-white " data-aos="fade-up" data-aos-delay="400" type="submit" >MAKE A RESERVATION</button>
-                                    </form> --}}
-
+                                <div class="my-2 flex justify-end border-b-2 border-slate-600  " ><a href="{{  route('user.reservations.create') }}" class=" font-extrabold border-2 text-black rounded-lg border-orange-600 bg-orange-200 bg-opacity-40 mt-6 mb-2 px-3 py-1 " data-aos="fade-up" data-aos-delay="100">MAKE RESERVATION</a></div>
 
                                 <a href="#feature" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="400">learn more</a>
 
@@ -161,14 +149,14 @@
 
 
  <!-- CLASS -->
- <section class="class section" id="class">
+ <section class="class section" id="services">
            <div class="container">
                 <div class="row">
 
                         <div class="col-lg-12 col-12 text-center mb-5">
                             <h6 data-aos="fade-up">Get A Perfect Body</h6>
 
-                            <h2 data-aos="fade-up" data-aos-delay="200">Our Services</h2>
+                            <h2 data-aos="fade-up" data-aos-delay="200" >Our Services</h2>
                          </div>
 
                         <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">

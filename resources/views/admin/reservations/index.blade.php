@@ -63,19 +63,19 @@
                 </td>
                 <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                    {{ $reservation->user_id->first_name }}
+                    {{ $reservation->user->first_name }}
                 </td>
 
                 <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $reservation->user_id->last_name }}
+                    {{ $reservation->user->last_name }}
                 </td>
 
                 <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $reservation->user_id->email }}
+                    {{ $reservation->user->email }}
                 </td>
 
                 <td scope="row" class="py-4 px-6 max-w-xs font-medium text-gray-900 whitespace-wrap dark:text-white">
-                    {{ $reservation->user_id->tel_number  }}
+                    {{ $reservation->user->id }}
                 </td>
 
                 <td scope="row" class="py-4 px-6 max-w-xs font-medium text-gray-900 whitespace-wrap dark:text-white">
@@ -83,12 +83,12 @@
                 </td>
 
                 <td scope="row" class="py-4 px-6 max-w-xs font-medium text-gray-900 whitespace-wrap dark:text-white">
-                    {{ $reservation->pitch_id->name  }}
+                    {{ $reservation->pitch->name  }}
                 </td>
 
 
                 <td scope="row" class="py-4 px-6 max-w-xs font-medium text-gray-900 whitespace-wrap dark:text-white">
-                    {{ $reservation->period_id->period_time  }}
+                    {{ $reservation->period->period_time  }}
                 </td>
 
 
