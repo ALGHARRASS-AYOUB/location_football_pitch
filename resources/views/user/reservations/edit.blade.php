@@ -180,7 +180,6 @@ $(document).ready(function () {
                                 });
                     }
                     else{
-                        console.log('should reload jj')
                         window.location.reload();
 
                     }

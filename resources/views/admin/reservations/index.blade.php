@@ -75,7 +75,7 @@
                 </td>
 
                 <td scope="row" class="py-4 px-6 max-w-xs font-medium text-gray-900 whitespace-wrap dark:text-white">
-                    {{ $reservation->user->id }}
+                    {{ $reservation->user->tel_number }}
                 </td>
 
                 <td scope="row" class="py-4 px-6 max-w-xs font-medium text-gray-900 whitespace-wrap dark:text-white">

@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\Pitch;
-use App\Enums\StatusEnum;
-use App\Models\Reservation;
-
-use Illuminate\Http\Request;
-
-use App\Http\Controllers\Controller;
 use App\Models\Period;
+use App\Rules\DateRule;
+
+use App\Enums\StatusEnum;
+
+use App\Models\Reservation;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -21,7 +24,7 @@ class ReservationController extends Controller
     public function index()
     {
 
-        $reservations=Reservation::all();
+        $reservations=Reservation::orderBy('id','desc')->get();
         return view('admin.reservations.index',compact('reservations'));
     }
 
@@ -65,9 +68,11 @@ class ReservationController extends Controller
      */
     public function edit(Reservation $reservation)
     {
-        $pitches=Pitch::where('status',StatusEnum::Avaliable);
+        $min_date=Carbon::now();
+        $pitches=Pitch::where('status',StatusEnum::Avaliable)->get();
         $periods=Period::all();
-        return view('admin.reservations.edit',compact('reservation','pitches','periods'));
+        $user=$reservation->user;
+        return view('admin.reservations.edit',compact('reservation','pitches','periods','user','min_date'));
     }
 
     /**
@@ -79,14 +84,29 @@ class ReservationController extends Controller
      */
     public function update(Request $request, Reservation $reservation)
     {
-        $rules=[];
+
+        $res='';
+        $rules=[
+            'res_date'=>['required',new DateRule],
+            'period_id'=>'required',
+            'pitch_id'=>'required',
+        ];
+
         $validator=validator($request->all(),$rules);
         if($validator->fails()){
-            return response()->json([ 'status'=>false,'error'=>$validator->errors()->toArray() ]);
+            $res= response()->json(['status'=>false,'errors'=>$validator->errors()->toArray()]);
         }else{
-            // test if the verificationController return true
-            $reservation->update([]);
+           $reservation->update([
+                'res_date'=>$request->res_date,
+            'period_id'=>$request->period_id,
+            'pitch_id'=>$request->pitch_id,
+
+            ]);
+
+             to_route('admin.reservations.edit',compact('reservation'))->with('warning',' your reservation has been updated successfully.');
+            $res= response()->json(['status'=>true]);
         }
+    return $res;
     }
 
     /**

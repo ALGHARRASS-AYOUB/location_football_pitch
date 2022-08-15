@@ -45,6 +45,9 @@
                     image
                 </th> --}}
                 <th scope="col" class="py-3 px-6">
+                    ID
+                </th>
+                <th scope="col" class="py-3 px-6">
                     First name
                 </th>
                 <th scope="col" class="py-3 px-6">
@@ -76,12 +79,15 @@
                 {{-- <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <img src="{{ Storage::url($user->image) }}" class="w-16 h-16 rounded-4xl">
                 </th> --}}
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ $user->id }}
+                </td>
+                <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $user->first_name }}
-                </th>
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                </td>
+                <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $user->last_name }}
-                </th>
+                </td>
                 <td class="py-4 px-6">
                     {{ $user->email }}
                 </td>
