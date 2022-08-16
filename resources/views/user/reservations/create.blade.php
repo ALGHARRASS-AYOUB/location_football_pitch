@@ -50,132 +50,133 @@
 <i ></i>
 </div>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
- let res_date='',period_id='',flag=false;
-$(document).ready(function () {
+{{-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 
-        $.ajaxSetup({
-        headers: { 'X-CSRF-TOKEN' : $('meta[name=csrf-token]').attr('content') }
+<script>
+    let res_date = '',
+    period_id = '',
+    flag = false;
+$(document).ready(function() {
+
+    $.ajaxSetup({
+        headers: { 'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content') }
     });
 
 
 
 
-  //date ajax verifiyDate
-    $('#res_date').on('change',function(){
-        res_date=$('#res_date').val();
-        console.log('data clicked value : '+res_date)
+    //date ajax verifiyDate
+    $('#res_date').on('change', function() {
+        res_date = $('#res_date').val();
+        console.log('data clicked value : ' + res_date)
         $.ajax({
-           method:'get',
-           dataType:'json',
-            url:"{{ route('verifyDate') }}",
-           data:{
-            'res_date':res_date,
-           },
+            method: 'get',
+            dataType: 'json',
+            url: "{{ route('verifyDate') }}",
+            data: {
+                'res_date': res_date,
+            },
 
-           beforeSend:function(){
-                        $('#period_id').val('');
-                        $('#pitch_id').val('');
-                         period_id=$('#period_id').val();
-                         pitch_id=$('#pitch_id').val();
+            beforeSend: function() {
+                $('#period_id').val('');
+                $('#pitch_id').val('');
+                period_id = $('#period_id').val();
+                pitch_id = $('#pitch_id').val();
 
-                        $(document).find('span.res_date_error').text('');
-                        $(document).find('span.period_id_success').text('');
-                        $('span.error_submit').text('')
+                $(document).find('span.res_date_error').text('');
+                $(document).find('span.period_id_success').text('');
+                $('span.error_submit').text('')
 
-                    },
+            },
 
-           success:function(res){
-                if(res.status==false){
+            success: function(res) {
+                if (res.status == false) {
                     $('span.res_date_error').text(res.errors.res_date[0])
-                }else{
-                    }
+                } else {}
 
             }
-        });//end ajax
-      });
+        }); //end ajax
+    });
 
-      $('#pitch_id').on('change',function(){
-                $('#period_id').val('');
-                period_id=$('#period_id').val();
-                $(document).find('span.period_id_success').text('');
-      })
-      // places verification
+    $('#pitch_id').on('change', function() {
+            $('#period_id').val('');
+            period_id = $('#period_id').val();
+            $(document).find('span.period_id_success').text('');
+        })
+        // places verification
 
-    $('#period_id').on('change',function(){
-        res_date=$('#res_date').val();
-        period_id=$('#period_id').val();
+    $('#period_id').on('change', function() {
+        res_date = $('#res_date').val();
+        period_id = $('#period_id').val();
         $.ajax({
-           method:'get',
-           dataType:'json',
-            url:"{{ route('verifyPlace') }}",
-           data:{
-            'res_date':res_date,
-            'period_id':period_id,
-            'pitch_id': $('#pitch_id').val(),
-           },
+            method: 'get',
+            dataType: 'json',
+            url: "{{ route('verifyPlace') }}",
+            data: {
+                'res_date': res_date,
+                'period_id': period_id,
+                'pitch_id': $('#pitch_id').val(),
+            },
 
-           beforeSend:function(){
-                        $(document).find('span.period_id_error').text('');
-                    $('span.error_submit').text('')
-                    $(document).find('span.period_id_success').text('');
+            beforeSend: function() {
+                $(document).find('span.period_id_error').text('');
+                $('span.error_submit').text('')
+                $(document).find('span.period_id_success').text('');
 
-                    },
+            },
 
-           success:function(res){
-            if(res.status==false){
-                $('span.period_id_error').text(res.msg_error);
-            }else{
-                flag=true;
-                $('span.period_id_success').text('places avaliables for this schedule are [ '+res.places_av+' ]');
+            success: function(res) {
+                if (res.status == false) {
+                    $('span.period_id_error').text(res.msg_error);
+                } else {
+                    flag = true;
+                    $('span.period_id_success').text('places avaliables for this schedule are [ ' + res.places_av + ' ]');
 
                 }
             }
-        });//end ajax
-      });
-      // end places verification
+        }); //end ajax
+    });
+    // end places verification
 
-      // submit the form
-    $('#reservation_form_id').on('submit',function(e){
+    // submit the form
+    $('#reservation_form_id').on('submit', function(e) {
         e.preventDefault();
 
-        if(!flag){
+        if (!flag) {
             $('span.error_submit').text('all fields must be valid before submit.');
-        }else{
+        } else {
             $.ajax({
-                method:'post',
-                dataType:'json',
+                method: 'post',
+                dataType: 'json',
                 url: "{{ route('user.reservations.store') }}",
-                data:{
-                    'res_date':res_date,
-                    'period_id':period_id,
+                data: {
+                    'res_date': res_date,
+                    'period_id': period_id,
                     'pitch_id': $('#pitch_id').val(),
                 },
-                beforeSend:function(){
+                beforeSend: function() {
                     $('span.error_submit').text('')
 
                 },
 
-                success: function(res,st){
+                success: function(res, st) {
 
-                    if(!res.status){
-                        $.each(res.error,function(prefix,val){
-                                    $('span.'+prefix+'_error').text(val[0])
-                                });
-                    }
-                    else{
+                    if (!res.status) {
+                        $.each(res.error, function(prefix, val) {
+                            $('span.' + prefix + '_error').text(val[0])
+                        });
+                    } else {
                         window.location.reload();
                     }
 
                 },
-                errors: function(res){
+                errors: function(res) {
 
                 }
-        });//end ajax
+            }); //end ajax
 
-    }//end condition else
+        } //end condition else
 
 
 

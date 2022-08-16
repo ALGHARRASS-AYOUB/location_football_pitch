@@ -1,22 +1,4 @@
-{{-- <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
-
- --}}
 
 
 
@@ -26,8 +8,11 @@
 
 
         <div class="bg-overlay"></div>
-        <div class="justify-start"><h1 data-aos="fade-up" class="text-white" data-aos-delay="400">{{ $user->first_name}} {{ $user->last_name}}</h1></div>
+        @auth
+        <div class="justify-start"><h1 data-aos="fade-up" class="text-white" data-aos-delay="400">{{ $user->first_name}} {{ $user->last_name}}</h1><h6 data-aos="fade-up" class="text-white text-xs py-0 my-0" data-aos-delay="400">{{ $user->email }}</h6></div>
 
+
+        @endauth
         <div class="container">
                 <div class="row">
 
@@ -61,13 +46,13 @@
         <div class="row">
 
             <div class="d-flex flex-column justify-content-center ml-lg-auto mr-lg-5 col-lg-5 col-md-6 col-12">
-                <h2 class="mb-3 text-white" data-aos="fade-up">New services</h2>
+                <h2 class="mb-3 text-white" data-aos="fade-up">New features</h2>
 
-                <h6 class="mb-4 text-white" data-aos="fade-up">Your membership is up to 2 months FREE ($62.50 per month)</h6>
+                <h6 class="mb-4 text-white" data-aos="fade-up">Your Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed mollitia dolore quod hic, aperiam vel est perferendis, alias eum praesentium molestias voluptatum labore ullam voluptatibus quo cupiditate non, maxime ad.</h6>
 
                 <p data-aos="fade-up" data-aos-delay="200">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quaerat ad numquam voluptas unde eaque. Maxime, amet eum autem voluptates earum delectus cum possimus, est rerum, similique ad enim? Nostrum. <a rel="nofollow" href="https://www.tooplate.com" target="_parent">Tooplate</a> for your commercial website. Bootstrap v4.2.1 Layout. Feel free to use it.</p>
 
-                <a href="#" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300" data-toggle="modal" data-target="#membershipForm">Become a member today</a>
+                <a href="{{ route('register') }}" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300" data-toggle="modal" >Become a member today</a>
             </div>
 
             <div class="mr-lg-auto mt-3 col-lg-4 col-md-6 col-12">
@@ -101,7 +86,7 @@
                 <div class="row">
 
                         <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
-                            <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Hello, we are USMBA Pitches group</h2>
+                            <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Hello, We are  Pitches group</h2>
 
                             <p data-aos="fade-up" data-aos-delay="400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptatem nobis necessitatibus corporis? Eligendi, nihil! Neque fugit nobis dolorem exercitationem assumenda veritatis, dolorum explicabo earum iusto, ut aliquid id nostrum..</p>
 
@@ -330,12 +315,16 @@
                 <div class="ml-auto col-lg-5 col-md-6 col-12">
                     <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2>
 
-                    <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
-                        <input type="text" class="form-control" name="cf-name" placeholder="Name">
+                    <form  method="post" action="{{ route('sendEmail') }}" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
+                        @csrf
+                        <input type="text" class="form-control" name="name" placeholder="Name">
+                        @error('name') {{ $message }} @enderror
 
-                        <input type="email" class="form-control" name="cf-email" placeholder="Email">
+                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        @error('email') {{ $message }} @enderror
 
-                        <textarea class="form-control" rows="5" name="cf-message" placeholder="Message"></textarea>
+                        <textarea class="form-control" rows="5" name="message" placeholder="Message"></textarea>
+                        @error('message') {{ $message }} @enderror
 
                         <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
                     </form>
@@ -347,7 +336,6 @@
                     <p data-aos="fade-up" data-aos-delay="800"><i class="fa fa-map-marker mr-1"></i> 120-240 Rio de Janeiro - State of Rio de Janeiro, Brazil</p>
 
                     <div class="google-map" data-aos="fade-up" data-aos-delay="900">
-                       {{-- <iframe src="https://maps.google.com/maps?q=Av.+Lúcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe> --}}
                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.4122437682404!2d-4.99935928531843!3d34.03329492617696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9f8c86d1348f1f%3A0x2f4c7b2754044613!2sWebmarko%20agence%20digitale%20%C3%A0%20F%C3%A8s!5e0!3m2!1sfr!2sma!4v1660138395640!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>

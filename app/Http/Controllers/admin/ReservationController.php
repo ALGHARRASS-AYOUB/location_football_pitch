@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\admin;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Pitch;
+
 use App\Models\Period;
+
 use App\Rules\DateRule;
-
 use App\Enums\StatusEnum;
-
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
@@ -57,7 +58,7 @@ class ReservationController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -115,8 +116,10 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reservation $reservation)
     {
-        //
+        $reservation->delete();
+        to_route('admin.reservations.index')->with('danger',' the reservation has been deleted successfully.');
+
     }
 }

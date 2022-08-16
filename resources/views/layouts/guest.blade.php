@@ -18,9 +18,8 @@
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
-        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-        {{-- @vite(['resources/assets/css/app.css', 'resources/assets/js/app.js']) --}}
-
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/assets/css/app.css', 'resources/assets/js/app.js'])
 
         <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -68,15 +67,15 @@
                                 </li>
                                    @endauth
                             <li class="nav-item">
-                                <a href="/#about" class="nav-link smoothScroll">About Us</a>
+                                <a href="{{ route('about') }}" class="nav-link smoothScroll">About Us</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="/#contact" class="nav-link smoothScroll">Contact</a>
+                                <a href="{{ route('contact') }}" class="nav-link smoothScroll">Contact</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="/#services" class="nav-link smoothScroll">Services</a>
+                                <a href="{{ route('services') }}" class="nav-link smoothScroll">Services</a>
                             </li>
 
                             @auth
@@ -125,6 +124,9 @@
                 </div>
             </nav>
         </div>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
         <main  class="font-sans text-gray-900 my-8 antialiased">

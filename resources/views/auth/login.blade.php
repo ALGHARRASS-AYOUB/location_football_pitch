@@ -50,6 +50,8 @@
                         </a>
                     @endif
 
+                    <a href="{{ route('register') }}" class="nav-link smoothScroll font-bold rounded-lg  text-black border-b-2 py-0 mx-2 border-black">register</a>
+
                     <x-button class="ml-3">
                         {{ __('Log in') }}
                     </x-button>

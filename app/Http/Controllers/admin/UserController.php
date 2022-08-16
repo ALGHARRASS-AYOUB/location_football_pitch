@@ -4,11 +4,13 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\User;
 use App\Enums\RoleEnum;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use BenSampo\Enum\Rules\EnumValue;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
@@ -31,6 +33,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        $this->authorize('create',User::class);
         $roles=RoleEnum::getValues();
         // dd($roles);
         return view('admin.users.create',compact('roles'));
@@ -44,6 +47,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create',User::class);
         $rules=[
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -84,9 +88,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        $reservations=$user->reservations;
+        return view('admin.reservations.index',compact('reservations'));
     }
 
     /**
@@ -97,6 +102,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('update',User::class);
         $roles=RoleEnum::getValues();
         return view('admin.users.edit',compact('user','roles'));
     }
@@ -110,6 +116,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->authorize('update',User::class);
+
         $rules=[
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -152,6 +160,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $this->authorize('delete',User::class);
         $user->delete();
         return to_route('admin.users.index')->with('danger','the user has been deleted successfully .');
 

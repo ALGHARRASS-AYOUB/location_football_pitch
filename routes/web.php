@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\PeriodController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\user\AuthUserController;
 use App\Http\Controllers\admin\ReservationController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\user\AuthenticationUserController;
 use App\Http\Controllers\user\UserReservationController;
 
@@ -30,16 +31,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about',function(){
+    return redirect('/#about');
+})->name('about');
+Route::get('/contact',function(){
+    return redirect('/#contact');
+})->name('contact');
+Route::get('/services',function(){
+    return redirect('/#services');
+})->name('services');
+
+Route::post('/send',[ContactController::class,'sendEmail'])->name('sendEmail');
+
 Route::middleware('auth')->name('dashboard')->group(function(){
     Route::get('/dashboard',[AuthenticationUserController::class,'index'] );
 
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard');
-    // })->middleware(['manager']);
-
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard');
-    // })->middleware(['manager']);
 
 
 });
@@ -56,12 +62,7 @@ Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(func
         Route::resource('/pitches',PitchController::class);
         Route::resource('/periods',PeriodController::class);
         Route::resource('/reservations',ReservationController::class);
-        // Route::middleware('manager')->group(function(){
-            //     Route::resource('/users',UserController::class);
-            //     Route::resource('/pitches',PitchController::class);
-            //     Route::resource('/periods',PeriodController::class);
-            //     Route::resource('/reservations',ReservationController::class);
-            // });
+
         });
 
         Route::get('/user/reservations/create/verifyDate',[VerificationController::class,'verifyDate'])->name('verifyDate');
@@ -73,14 +74,6 @@ Route::middleware(['auth'])->name('user.')->prefix('user')->group(function(){
         Route::resource('/reservations',UserReservationController::class);
 
 });
-
-// Route::get('user/{id}',function($id){
-//         dd(User::find($id));
-// })->middleware('auth');
-
-//this is a bullshit
-
-
 
 
 

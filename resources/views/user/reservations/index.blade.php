@@ -79,7 +79,9 @@
 
                     @if ($reservation->updated_at->floatDiffInHours($now) <= 2 || ($reservation->res_date > $now &&  $reservation->res_date->floatDiffInHours($now) >= 48    ))
                     <div class="flex justify-center flex-wrap space-x-2 space-y-2">
+
                         <div class="my-1"><a href="{{ route('user.reservations.edit',$reservation->id) }}" class="rounded-lg px-4 bg-green-600 bg-opacity-80 hover:bg-green-900 text-white"  data-modal-toggle="update-modal" >Edit</a></div>
+
                        <div class=" p-auto my-1"><form action="{{ route('user.reservations.destroy',$reservation->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete ?')" >
                         @csrf
                         @method('DELETE')

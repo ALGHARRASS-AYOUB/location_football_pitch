@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\VerificationController;
 use App\Http\Requests\StoreReservationRequest;
+use App\Policies\ReservationPolicy;
 
 class UserReservationController extends Controller
 {
@@ -107,6 +108,8 @@ class UserReservationController extends Controller
      */
     public function edit(Reservation $reservation)
     {
+        $this->authorize('edit_reservation_permission',$reservation);
+        // $this->authorize('update',Reservation::class);
         $user =Auth::user();
         $min_date=Carbon::now();
         $periods=Period::all();
@@ -126,7 +129,7 @@ class UserReservationController extends Controller
      */
     public function update(Request $request, Reservation $reservation)
     {
-
+        $this->authorize('edit_reservation_permission',$reservation);
         $user_id=Auth::user()->id;
         $res='';
         $rules=[

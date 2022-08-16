@@ -12,9 +12,12 @@
                     Users
                 </div>
             </div>
+            @can('create',\App\Modals\User::class)
             <div class="flex justify-end m-2 p-2">
                 <a href="{{ route('admin.users.create') }}" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-800 rounded-lg">new user</a>
             </div>
+            @endcan
+
         </div>
     </div>
 
@@ -99,13 +102,20 @@
                 </td>
                 <td class="py-4 px-6">
                     <div class="flex space-x-2">
-                        {{-- <a href="{{ route('admin.reservations.show',$user->id) }}" class="px-4 py-1 bg-slate-600 hover:bg-slate-900 rounded-lg text-white"  data-modal-toggle="update-modal" >reservations</a> --}}
-                        <a href="{{ route('admin.users.edit',$user->id) }}" class="px-4 py-1 bg-green-600 hover:bg-green-900 rounded-lg text-white"  data-modal-toggle="update-modal" >Edit</a>
+                        <a href="{{ route('admin.users.show',$user) }}" class="px-4 py-1 bg-green-600 hover:bg-green-900 rounded-lg text-white"  data-modal-toggle="update-modal" >Show reservation</a>
+                        @can('update',$user)
+                        <a href="{{ route('admin.users.edit',$user->id) }}" class="px-4 py-1 bg-yellow-600 hover:bg-yellow-900 rounded-lg text-white"  data-modal-toggle="update-modal" >Edit</a>
+                        @endcan
+                        @cannot('update',$user)
+                            <span class="px-2">read only</span>
+                        @endcannot
+                        @can('delete',$user)
                         <form action="{{ route('admin.users.destroy',$user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete ?')" class="px-4 py-1 rounded-lg bg-red-600 hover:bg-red-900 text-white">
                         @csrf
                         @method('DELETE')
                         <button type="submit" >Delete</button>
                         </form>
+                        @endcan
                     </div>
                 </td>
             </tr>
