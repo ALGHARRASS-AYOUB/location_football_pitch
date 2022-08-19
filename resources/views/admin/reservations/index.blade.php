@@ -18,8 +18,31 @@
         </div>
     </div>
 
-   {{-- table information  --}}
-   <div class="overflow-x-auto relative">
+    <form id="date_form" action="{{ route('admin.searchDate') }}" method="get">
+
+        <label for="date" class="bg-slate-200 font-bold p-2" >choose a date: </label>
+        <input type="date" id="date" name="date" class="border-0 border-b-2 ">
+    </form>
+
+    {{-- table information  --}}
+    <div class="overflow-x-auto relative">
+        @if (isset($date))
+        <div class="p-3 m-2 bg-yellow-600 text-white">Date : {{ $date }}</div>
+        @endif
+        <div class="m-2 p-2 bg-green-600 text-white">Reservation Number: {{ $reservaion_number }}</div>
+        <div class="flex flex-wrap">
+            @foreach ($periods as $pr)
+                    <div class="m-2 p-2 bg-blue-600 text-yellow-200">number of reservations at {{ $pr->period_time }}: <h6 class="text-white font-bold ">@if (isset($date))
+                        {{ count($pr->reservations->where('res_date',$date))  }}
+
+                        @else
+                        {{ count($pr->reservations)  }}
+
+                    @endif</h6></div>
+            @endforeach
+
+        </div>
+
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -110,6 +133,43 @@
             </tbody>
     </table>
 </div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+              headers: { 'X-CSRF-TOKEN' : $('meta[name=csrf-token]').attr('content') }
+        });
+
+        $('#date').on('change',function(){
+            $.ajax({
+                method: $('#date_form').attr('method'),
+                url: $('#date_form').attr('action'),
+
+                data: {
+                    'date': $('#date').val(),
+                },
+
+                beforeSend: function(){
+
+                },
+                success: function(){
+                    console.log('date send');
+                    $('#date_form').submit();
+                },
+                error: function(){
+
+                },
+
+            });
+        });
+
+
+    });
+</script>
 
 </x-admin-layout>
 

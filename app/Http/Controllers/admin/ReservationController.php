@@ -26,7 +26,9 @@ class ReservationController extends Controller
     {
 
         $reservations=Reservation::orderBy('id','desc')->get();
-        return view('admin.reservations.index',compact('reservations'));
+        $reservaion_number=count($reservations);
+        $periods=Period::all();
+        return view('admin.reservations.index',compact('reservations','reservaion_number','periods'));
     }
 
     /**
