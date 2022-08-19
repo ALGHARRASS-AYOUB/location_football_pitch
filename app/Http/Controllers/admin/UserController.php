@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\User;
+use App\Models\Period;
 use App\Enums\RoleEnum;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -91,8 +92,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+
+        $periods=Period::all();
         $reservations=$user->reservations;
-        return view('admin.reservations.index',compact('reservations'));
+        return view('admin.users.show',compact('reservations','user','periods'));
     }
 
     /**

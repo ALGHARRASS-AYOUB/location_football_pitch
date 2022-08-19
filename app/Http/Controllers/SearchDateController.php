@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Period;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -16,5 +17,15 @@ class SearchDateController extends Controller
         $periods=Period::all();
         $reservaion_number=count($reservations);
         return view('admin.reservations.index',compact('reservations','reservaion_number','periods','date'));
+    }
+
+    public function searchDateForUser(Request $request,$id){
+        $date=$request->date;
+        $user=User::find($id);
+        $date=Carbon::parse($request->date)->format('Y-m-d H:i:s');
+        $reservations=$user->reservations->where('res_date',$date);
+        $periods=Period::all();
+
+        return view('admin.users.show',compact('reservations','periods','date','user'));
     }
 }

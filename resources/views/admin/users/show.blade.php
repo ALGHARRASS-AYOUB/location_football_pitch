@@ -17,8 +17,9 @@
             </div>
         </div>
     </div>
+    {{ $user->id }}
 
-    <form id="date_form" action="{{ route('admin.searchDate') }}" method="get">
+    <form id="date_form" action="{{ route('admin.searchDateForUser',$user->id) }}" method="get">
 
         <label for="date" class="bg-slate-200 font-bold p-2" >choose a date: </label>
         <input type="date" id="date" name="date" class="border-0 border-b-2 ">
@@ -33,10 +34,10 @@
         <div class="flex flex-wrap">
             @foreach ($periods as $pr)
                     <div class="m-2 p-2 bg-blue-600 text-yellow-200">number of reservations at {{ $pr->period_time }}: <h6 class="text-white font-bold ">@if (isset($date))
-                        {{ count($pr->reservations->where('res_date',$date))  }}
+                        {{ count($pr->reservations->where('res_date',$date)->where('user_id',$user->id))  }}
 
                         @else
-                        {{ count($pr->reservations)  }}
+                        {{ count($pr->reservations->where('user_id',$user->id))  }}
 
                     @endif</h6></div>
             @endforeach

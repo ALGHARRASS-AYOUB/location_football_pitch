@@ -67,6 +67,7 @@ Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(func
         Route::resource('/reservations',ReservationController::class);
 
         Route::get('/reservations/index/searchDate',[SearchDateController::class,'searchDate'])->name('searchDate');
+        Route::get('/users/show/{id}',[SearchDateController::class,'searchDateForUser'])->name('searchDateForUser');
         Route::get('/reservations/index/searchUser',[SearchUserController::class,'searchUser'])->name('searchUser');
         });
         Route::get('/user/reservations/create/verifyDate',[VerificationController::class,'verifyDate'])->name('verifyDate');
