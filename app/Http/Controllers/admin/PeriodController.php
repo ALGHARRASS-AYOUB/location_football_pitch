@@ -15,8 +15,10 @@ class PeriodController extends Controller
      */
     public function index()
     {
+
         $periods=Period::all();
-        return view('admin.periods.index',compact('periods'));
+        $periods_number=count($periods);
+        return view('admin.periods.index',compact('periods','periods_number'));
     }
 
     /**

@@ -17,6 +17,7 @@
             </div>
         </div>
     </div>
+    <div class="m-2 p-2 bg-blue-600 text-yellow-200">TOTAL PITCHES  : <h6 class="text-white font-bold ">{{ $pitches_number}}</h6></div>
 
       {{-- table information  --}}
       <div class="overflow-x-auto relative">

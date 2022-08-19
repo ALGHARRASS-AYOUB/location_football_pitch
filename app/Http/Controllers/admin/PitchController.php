@@ -20,7 +20,8 @@ class PitchController extends Controller
     public function index()
     {
         $pitches=Pitch::all();
-        return view('admin.pitches.index',compact('pitches'));
+        $pitches_number=count($pitches);
+        return view('admin.pitches.index',compact('pitches','pitches_number'));
     }
 
     /**

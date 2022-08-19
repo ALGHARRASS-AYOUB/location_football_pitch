@@ -32,6 +32,9 @@
             </div>
     </div>
 
+    <div class="m-2 p-2 bg-blue-600 text-yellow-200">TOTAL PERIODS  : <h6 class="text-white font-bold ">{{ $periods_number}}</h6></div>
+
+
       {{-- period information  --}}
       <div class="overflow-x-auto relative">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

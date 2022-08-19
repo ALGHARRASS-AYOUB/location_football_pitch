@@ -3,17 +3,19 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\SearchDateController;
+use App\Http\Controllers\SearchUserController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\PitchController;
 use App\Http\Controllers\admin\PeriodController;
 use App\Http\Controllers\VerificationController;
+
 use App\Http\Controllers\user\AuthUserController;
 use App\Http\Controllers\admin\ReservationController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\SearchDateController;
-use App\Http\Controllers\user\AuthenticationUserController;
 use App\Http\Controllers\user\UserReservationController;
+use App\Http\Controllers\user\AuthenticationUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +67,7 @@ Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(func
         Route::resource('/reservations',ReservationController::class);
 
         Route::get('/reservations/index/searchDate',[SearchDateController::class,'searchDate'])->name('searchDate');
+        Route::get('/reservations/index/searchUser',[SearchUserController::class,'searchUser'])->name('searchUser');
         });
         Route::get('/user/reservations/create/verifyDate',[VerificationController::class,'verifyDate'])->name('verifyDate');
         Route::get('/user/reservations/create/verifyPlace/{id?}',[VerificationController::class,'verifyPlace'])->name('verifyPlace');
