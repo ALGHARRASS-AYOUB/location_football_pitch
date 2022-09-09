@@ -34,4 +34,8 @@ class UserPolicy
 
     }
 
+    // public function account_permissions( $user){
+    //     // dd($user,Auth::user(),$user==Auth::user());
+    //     return Auth::check() && Auth::user()==$user;
+    // }
 }

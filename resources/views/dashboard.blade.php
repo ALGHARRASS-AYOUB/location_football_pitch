@@ -20,7 +20,7 @@
                           <div class="hero-text mt-5 text-center">
 
 
-                                <h6 data-aos="fade-up" data-aos-delay="300">usmba pitches group</h6>
+                                <h6 data-aos="fade-up" data-aos-delay="300"> pitches group</h6>
 
                                 <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Play football and Have Fun in our best Pitches</h1>
 
@@ -139,58 +139,37 @@
                 <div class="row">
 
                         <div class="col-lg-12 col-12 text-center mb-5">
-                            <h6 data-aos="fade-up">Get A Perfect Body</h6>
+                            <h6 data-aos="fade-up">the best services ever</h6>
 
                             <h2 data-aos="fade-up" data-aos-delay="200" >Our Services</h2>
                          </div>
 
-                        <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
-                            <div class="class-thumb">
-                                <img src="{{ asset('assets/images/class/yoga-class.jpg') }}" class="img-fluid" alt="Class">
+                         <div class="flex flex-auto flex-wrap">
 
-                                <div class="class-info">
-                                    <h3 class="mb-1">Yoga</h3>
+                            @foreach ($pitches as $pitch)
 
-                                    <span><strong>Trained by</strong> - Bella</span>
+                            <div class="mt-5 mt-lg-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
+                                <div class="class-thumb">
+                                    <img src="{{ asset('assets/images/class/pitch1.jpg') }}" class="img-fluid" alt="Class">
 
-                                    <span class="class-price">$50</span>
+                                    <div class="class-info">
+                                        <h3 class="mb-1">{{ $pitch->name }}</h3>
 
-                                    <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                                        <span><strong>in </strong> {{ $pitch->location }}</span>
+
+                                        <span class="class-price">{{ $pitch->price }} DH</span>
+
+                                        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="mt-5 mt-lg-0 mt-md-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="500">
-                            <div class="class-thumb">
-                                <img src="{{ asset('assets/images/class/crossfit-class.jpg') }}" class="img-fluid" alt="Class">
+                            @endforeach
 
-                                <div class="class-info">
-                                    <h3 class="mb-1">Areobic</h3>
+                         </div>
 
-                                    <span><strong>Trained by</strong> - Mary</span>
 
-                                    <span class="class-price">$66</span>
 
-                                    <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-5 mt-lg-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
-                            <div class="class-thumb">
-                                <img src="{{ asset('assets/images/class/cardio-class.jpg') }}" class="img-fluid" alt="Class">
-
-                                <div class="class-info">
-                                    <h3 class="mb-1">Cardio</h3>
-
-                                    <span><strong>Trained by</strong> - Cathe</span>
-
-                                    <span class="class-price">$75</span>
-
-                                    <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-                                </div>
-                            </div>
-                        </div>
 
                 </div>
            </div>
@@ -312,7 +291,7 @@
       <div class="container">
            <div class="row">
 
-                <div class="ml-auto col-lg-5 col-md-6 col-12">
+                {{-- <div class="ml-auto col-lg-5 col-md-6 col-12">
                     <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2>
 
                     <form  method="post" action="{{ route('sendEmail') }}" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
@@ -328,7 +307,7 @@
 
                         <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
                     </form>
-                </div>
+                </div> --}}
 
                 <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
                     <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Where you can <span>find us</span></h2>
