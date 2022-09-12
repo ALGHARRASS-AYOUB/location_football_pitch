@@ -3,7 +3,7 @@
     <div   class="container bg-slate-100 opacity-90 m-1 p-4 mt-3 rounded-lg"  >
         <h4   data-aos-delay="400" data-aos="fade-up" class="text-slate-900 ">{{ $user->first_name }} {{ $user->last_name }}</h4>
         <h6 data-aos="fade-up" class="text-black text-xs py-0 my-0" data-aos-delay="400">{{ $user->email }}</h6>
-        <div class="mb-6 p-2 pb-3  " data-aos="fade-right"><h3>you can chnage your accont information.</h3></div>
+        <div class="mb-6 p-2 pb-3 text-green-900" data-aos="fade-right"><h3>you can change your account information.</h3></div>
 
     <form id="user_create_form_id" method="post" action="{{ route('user.account.update',$user->id) }}" >
         @method('PUT')
